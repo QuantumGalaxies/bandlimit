@@ -5,14 +5,23 @@
 
 #run in bandlimit directory 
 
+rm -rf /home/jonathanjerke/QuantumGalaxies/Andromeda/venv/lib/python3.12/site-packages/bandlimit*
+rm -rf build
+rm -rf dist
+rm -rf bandlimit.egg*
+rm bandlimit/*.so
+rm Object/*.so
+rm -rf bandlimit/__py*
+rm bandlimit/gaussian.c
 ##compile first
 cd Object
 make libgaussianSinc.so
-export LDFLAGS=-L`pwd`
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
+#export LDFLAGS=-L`pwd`
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
 cd ..
 
+cp Object/libgaussianSinc.so bandlimit
 cd bandlimit
-export PYTHONPATH=$PYTHONPATH:`pwd`
+#export PYTHONPATH=$PYTHONPATH:`pwd`
 cd ..
-python3 setup.py build_ext -i
+#python3 setup.py build_ext

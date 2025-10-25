@@ -8,11 +8,11 @@
 
 cc   = gcc
 
-LAPACKlib          = /usr/lib/x86_64-linux-gnu       
+LAPACKlib          = /usr/lib/x86_64-linux-gnu
 LAPACKinc       = /usr/include/x86_64-linux-gnu
 
 flags           =-I${LAPACKinc}   -L${LAPACKlib}
-lib             = -lm 
+lib             = -lm
 libgaussianSinc.so: system.h constants.h  coreMath.c coreMath.h
-	$(cc) $(flags) coreMath.c $(lib) -shared -Wall -fPIC -o libgaussianSinc.so
+	$(cc) $(flags) coreMath.c $(lib) -shared -Wall -fPIC -fvisibility=default -o libgaussianSinc.so
 

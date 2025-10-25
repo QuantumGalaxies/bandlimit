@@ -1,4 +1,4 @@
-include Object/libgaussianSinc.so
-recursive-include Object *.c *.h
+include Object/*.h 
+include Object/*.c
 include Faddeeva/Faddeeva.h
-recursive-include bandlimit *.pyx *.pxd *.pxi *.c
+recursive-include bandlimit *.pyx *.pxd *.pxi *.c *.so

@@ -1,18 +1,15 @@
-import os
 from setuptools import setup, Extension
 from Cython.Build import cythonize
-
-SHARED_OBJECT_PATH = "Object/libgaussianSinc.so"
-
-HEADER_INCLUDE_DIR ="Faddeeva"
 
 extensions = [
 	Extension(
 		name="bandlimit.gaussian",
 		sources=["bandlimit/gaussian.pyx"],
-		include_dirs=[HEADER_INCLUDE_DIR],
-		extra_objects=[SHARED_OBJECT_PATH],
-		runtime_library_dirs=['$ORIGIN']
+		include_dirs=["Object","Faddeeva"],
+		libraries=['gaussianSinc'],
+		library_dirs=["bandlimit"],
+		runtime_library_dirs=['$ORIGIN'],
+		language="c",
 		)
 ]
 

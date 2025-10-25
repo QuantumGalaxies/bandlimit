@@ -11,8 +11,5 @@
 
 include "system.pxi"
 
-from constants cimport inta
-from constants cimport floata
-
-cdef extern from "../Object/coreMath.h":
-    floata GaussianInSinc( floata K, inta n, floata alpha, floata y, floata X )
+cdef extern from "coreMath.h":
+    double GaussianInSinc( double K, int n, double alpha, double y, double X )

@@ -16,5 +16,17 @@
 #include "constants.h"
 
 DCOMPLEX expErf ( DCOMPLEX z );
-floata GaussianInSinc( floata K, inta n, floata alpha, floata y, floata X );
+//double GaussianInSinc( double K, int n, double alpha, double y, double X );
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+double GaussianInSinc( double K, int n, double alpha, double y, double X );
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* coreMath_h */

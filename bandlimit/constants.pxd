@@ -11,9 +11,3 @@
 
 
 include "system.pxi"
-
-ctypedef int inta
-ctypedef double floata
-ctypedef floata mea
-ctypedef int ADDRESS_TYPE
-ctypedef char* stringa
