@@ -9,6 +9,4 @@
 
 # MIT license
 
-#from GaussianSinc cimport constants
-#from GaussianSinc cimport coreMath
-from .GaussianSinc import compute
+from .gaussian import compute

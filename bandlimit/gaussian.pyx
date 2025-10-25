@@ -21,10 +21,7 @@ from coreMath cimport GaussianInSinc
 
 cpdef double compute(floata lattice, int n, floata alpha,floata y,floata X ):
         """
-        * GTOs
-        * GaussianInSinc = < (x-y)^n Exp[-0.5 * alpha * (x-y)^2] *normalization | X > < X | Sinc @ lattice >
-        *
-
-
+        * GTOs in plane waves
+        * GaussianInSinc = < normalized_angular_gaussian(n) @ y | Sinc@ X in lattice >
         """
         return GaussianInSinc(pi/lattice, n, 0.5*alpha, y, X)

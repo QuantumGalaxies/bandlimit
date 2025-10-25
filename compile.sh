@@ -3,7 +3,7 @@
 ##if you run this a second time just run 
 ##bash compile.sh
 
-#run in Andromeda directory 
+#run in bandlimit directory 
 
 ##compile first
 cd Object
@@ -12,7 +12,7 @@ export LDFLAGS=-L`pwd`
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
 cd ..
 
-cd GaussianSinc
+cd bandlimit
 export PYTHONPATH=$PYTHONPATH:`pwd`
-python3 setup.py build_ext -i
 cd ..
+python3 setup.py build_ext -i
