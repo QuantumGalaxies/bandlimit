@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel", "Cython"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bandlimit"
+version = "1.1.0"
+authors = [
+    { name = "Jonathan Jerke", email = "jonathan@quantumgalaxies.org" },
+]
+description = "GaussianSinc: overlap of Sinc with various (non)angular Gaussians"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    'Intended Audience :: Science/Research',
+    'Intended Audience :: Developers',
+]
+dependencies = ["cython","numpy"]
+dynamic = []
+license = "MIT"
+license-files = ["LICENSE.txt"]
+
+
+# All setuptools configuration should be nested here
+[tool.setuptools]
+packages = ["bandlimit"]
+
+[project.urls]
+Homepage = "https://sopy.quantumgalaxies.org"
+Issues = "https://github.com/quantumgalaxies/sopy/issues"
