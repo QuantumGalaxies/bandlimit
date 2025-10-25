@@ -5,7 +5,7 @@
 
 ### Conceptual
 
-Gaussians are primative data types on a lattice, Sincs are the collection of maximumally localized bandlimited planewaves.
+Gaussians are primitive data types on a lattice, Sincs are the collection of maximumally localized bandlimited planewaves.
 Let the two have fun together!
 
 ### How to install
