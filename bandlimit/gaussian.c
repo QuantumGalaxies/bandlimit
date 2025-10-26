@@ -6,14 +6,14 @@
         "depends": [
             "Object/coreMath.h"
         ],
+        "extra_compile_args": [
+            "-O3"
+        ],
         "include_dirs": [
             "Object",
             "Faddeeva"
         ],
         "language": "c",
-        "libraries": [
-            "gaussianSinc"
-        ],
         "library_dirs": [
             "bandlimit"
         ],
@@ -22,7 +22,9 @@
             "$ORIGIN"
         ],
         "sources": [
-            "bandlimit/gaussian.pyx"
+            "bandlimit/gaussian.pyx",
+            "Object/coreMath.c",
+            "Faddeeva/Faddeeva.cc"
         ]
     },
     "module_name": "bandlimit.gaussian"

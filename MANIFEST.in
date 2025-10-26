@@ -1,4 +1,4 @@
 include Object/*.h 
 include Object/*.c
-include Faddeeva/Faddeeva.h
-recursive-include bandlimit *.pyx *.pxd *.pxi *.c *.so
+include Faddeeva/Faddeeva.*
+recursive-include bandlimit *.pyx *.pxd *.pxi *.c 

@@ -14,14 +14,14 @@ rm Object/*.so
 rm -rf bandlimit/__py*
 rm bandlimit/gaussian.c
 ##compile first
-cd Object
-make libgaussianSinc.so
+#cd Object
+#make libgaussianSinc.so
 #export LDFLAGS=-L`pwd`
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
-cd ..
+#cd ..
 
-cp Object/libgaussianSinc.so bandlimit
-cd bandlimit
+#cp Object/libgaussianSinc.so bandlimit
+#cd bandlimit
 #export PYTHONPATH=$PYTHONPATH:`pwd`
-cd ..
+#cd ..
 #python3 setup.py build_ext

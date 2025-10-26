@@ -4,10 +4,13 @@ from Cython.Build import cythonize
 extensions = [
 	Extension(
 		name="bandlimit.gaussian",
-		sources=["bandlimit/gaussian.pyx"],
+		sources=["bandlimit/gaussian.pyx"
+			,"Object/coreMath.c"
+			,"Faddeeva/Faddeeva.cc"],
 		include_dirs=["Object","Faddeeva"],
-		libraries=['gaussianSinc'],
+#		libraries=['gaussianSinc'],
 		library_dirs=["bandlimit"],
+		extra_compile_args=["-O3"],
 		runtime_library_dirs=['$ORIGIN'],
 		language="c",
 		)
@@ -16,8 +19,8 @@ extensions = [
 setup(
 	packages=['bandlimit'],
 	package_dir={'bandlimit':'bandlimit'},
-	package_data={'bandlimit':['libgaussianSinc.so']
-	},
+#	package_data={'bandlimit':['libgaussianSinc.so']
+#	},
 
 	ext_modules=cythonize(
 		extensions,
