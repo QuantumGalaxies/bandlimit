@@ -13,3 +13,6 @@ include "system.pxi"
 
 cdef extern from "coreMath.h":
     double GaussianInSinc( double K, int n, double alpha, double y, double X )
+
+cdef extern from "coreMath.h":
+    double momentumIntegralInTrain2 ( double beta, double kl , double d, int diagonal_flag )

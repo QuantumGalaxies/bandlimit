@@ -102,3 +102,45 @@ double GaussianInSinc( double K, int n, double alpha, double y, double X ){
 
     return 0;
 }
+
+
+/*
+* Momentum integral in tensor train form
+* momentumIntegralInTrain2 ( beta, kl , d, diagonal_flag )
+* diagonal_flag = 1 for diagonal piece
+* diagonal_flag = 0 for off diagonal piece
+*/
+double momentumIntegralInTrain2 ( double beta, double kl , double d, int diagonal_flag ){
+    DCOMPLEX base0a,base0b,base1a,base1b,base2aa,base2ab, stage1,stage2,stage3;
+    
+    //correct//
+    beta = beta * d;
+    
+    switch(diagonal_flag){
+        case 1:
+            base0a = exp(-pi*pi/beta/beta)*cexp( 2*pi*I*kl );
+            base0b = conj(base0a);
+            base1a = expErf(-I * kl * beta);
+            base1b = conj(base1a);
+            base2aa = expErf(pi/beta-I * kl * beta);
+            base2ab = conj(base2aa);
+
+            stage1 = 0.5*(base2aa+base2ab);
+            stage2 = 0.5*beta/sqrt(pi*pi*pi)*(kl*beta *sqrt(pi)*I*(2*base1a-base2aa+base2ab)-2+base0a+base0b);
+    
+            return creal(stage1+stage2);
+                
+        case 0:
+            base1a = expErf(-I * kl * beta);
+            base1b = conj(base1a);
+            base2aa = expErf(pi/beta-I * kl * beta);
+            base2ab = conj(base2aa);
+
+            stage1 = (-I)/(4.*pi)*(base2aa - base2ab - 2*base1a );
+            return creal(stage1);
+        default:
+            break;
+
+    }
+    return 0.;
+}

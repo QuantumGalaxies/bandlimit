@@ -13,10 +13,21 @@
 include "system.pxi"
 
 from .coreMath cimport GaussianInSinc
+from .coreMath cimport momentumIntegralInTrain2
 
-cpdef double compute(double lattice, int n, double alpha,double y, double X ):
+cpdef double compute(double lattice, int n, double alpha, double y, double X):
         """
         * GTOs in plane waves
         * GaussianInSinc = < normalized_angular_gaussian(n) @ y | Sinc@ X in lattice >
         """
         return GaussianInSinc(pi/lattice, n, 0.5*alpha, y, X)
+
+
+cpdef double ops(double lattice, double alpha, double y, diagonal_flag):
+        """
+        * GTOs in plane waves
+        * Part of tensor train, a diagonal operator
+        * momentumIntegralInTrain2 for normalized_gaussian @ y 
+        * off diagonal piece coupled to momentum operators
+        """
+        return momentumIntegralInTrain2( sqrt(alpha/2.0), y/lattice , lattice, diagonal_flag )
