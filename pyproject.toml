@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel", "Cython"]
+requires = ["setuptools>=77.0.3", "wheel", "Cython"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,7 +8,7 @@ version = "1.1.6"
 authors = [
     { name = "Jonathan Jerke", email = "jonathan@quantumgalaxies.org" },
 ]
-description = "GaussianSinc: overlap of Sinc with various (non)angular Gaussians"
+description = "Gaussians and plane waves playing well together"
 readme = "README.md"
 requires-python = ">=3.12"
 classifiers = [

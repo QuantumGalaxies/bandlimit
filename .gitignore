@@ -2,6 +2,7 @@
 examples/paper
 .vscode
 
+wheelhouse
 __pycache__/
 *.py[cod]
 *$py.class
