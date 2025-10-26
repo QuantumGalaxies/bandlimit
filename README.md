@@ -14,6 +14,6 @@ Let the two have fun together!
 
 `from bandlimit.gaussian import compute`
 
-## for a angular_gaussian like (x-y)^n * exp(-0.5*alpha*x**2) 
+## for a angular_gaussian like (x-y)^n * exp(-0.5 alpha (x-y)**2) 
 ## compute(lattice, n, alpha, y, X)  = < normalized_angular_gaussian(n) @ y | Sinc @ X in lattice >
 
