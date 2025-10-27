@@ -25,7 +25,7 @@ extern "C" {
 
 double GaussianInSinc( double K, int n, double alpha, double y, double X );
 double momentumIntegralInTrain2 ( double beta, double kl , double d, int diagonal_flag );
-
+double momentumIntegralInTrain3 ( double boost, double alpha, double y , double d, int diagonal_flag );
 #ifdef __cplusplus
 }
 #endif

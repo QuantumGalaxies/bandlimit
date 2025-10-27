@@ -16,3 +16,7 @@ cdef extern from "coreMath.h":
 
 cdef extern from "coreMath.h":
     double momentumIntegralInTrain2 ( double beta, double kl , double d, int diagonal_flag )
+
+cdef extern from "coreMath.h":
+    double momentumIntegralInTrain3 (double boost,  double alpha, double y , double d, int diagonal_flag )
+

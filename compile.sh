@@ -5,7 +5,7 @@
 
 #run in bandlimit directory 
 
-rm -rf /home/jonathanjerke/QuantumGalaxies/Andromeda/venv/lib/python3.12/site-packages/bandlimit*
+rm -rf venv/lib/python3.12/site-packages/bandlimit*
 rm -rf build
 rm -rf dist
 rm -rf bandlimit.egg*
@@ -13,6 +13,9 @@ rm bandlimit/*.so
 rm Object/*.so
 rm -rf bandlimit/__py*
 rm bandlimit/gaussian.c
+python -m build
+pip install .
+
 ##compile first
 #cd Object
 #make libgaussianSinc.so

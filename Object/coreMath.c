@@ -110,34 +110,33 @@ double GaussianInSinc( double K, int n, double alpha, double y, double X ){
 * diagonal_flag = 1 for diagonal piece
 * diagonal_flag = 0 for off diagonal piece
 */
-double momentumIntegralInTrain2 ( double beta, double kl , double d, int diagonal_flag ){
-    DCOMPLEX base0a,base0b,base1a,base1b,base2aa,base2ab, stage1,stage2,stage3;
-    
-    //correct//
-    beta = beta * d;
-    
+double momentumIntegralInTrain3 ( double boost, double alpha, double y , double d, int diagonal_flag ){
+    DCOMPLEX extra, stage1a,stage1b, stage2a, stage2b;
+    double boost1;
+    boost1 = boost + pi/d;
+    stage1a =  0.5 * sqrt(d*sqrt(alpha/pi)) * ( expErf((pi - d * boost1 + I * d * y * alpha)/sqrt(2.0*alpha)/d )
+                                            +expErf((pi + d * boost1 - I * d * y * alpha)/sqrt(2.0*alpha)/d ));
+    boost1 = boost - pi/d;
+    stage1b =  0.5 * sqrt(d*sqrt(alpha/pi)) * ( expErf((pi - d * boost1 + I * d * y * alpha)/sqrt(2.0*alpha)/d )
+                                                    +expErf((pi + d * boost1 - I * d * y * alpha)/sqrt(2.0*alpha)/d ));
+
+
     switch(diagonal_flag){
         case 1:
-            base0a = exp(-pi*pi/beta/beta)*cexp( 2*pi*I*kl );
-            base0b = conj(base0a);
-            base1a = expErf(-I * kl * beta);
-            base1b = conj(base1a);
-            base2aa = expErf(pi/beta-I * kl * beta);
-            base2ab = conj(base2aa);
+            boost1 = boost + pi/d;
+            stage2a = ( boost - I * alpha * d * y + 2.0 * pi / d) * stage1a;
+            boost1 = boost - pi/d;
+            stage2b = ( boost - I * alpha * d * y - 2.0 * pi / d) * stage1b;
 
-            stage1 = 0.5*(base2aa+base2ab);
-            stage2 = 0.5*beta/sqrt(pi*pi*pi)*(kl*beta *sqrt(pi)*I*(2*base1a-base2aa+base2ab)-2+base0a+base0b);
-    
-            return creal(stage1+stage2);
-                
+            extra = 0.5*d*sqrt(sqrt(alpha*alpha*alpha/pi/pi/pi/pi/pi)) *cexp(-(4.*pi*pi + 4* d*pi*(I *y * alpha + boost) + d*d*boost *( -2.0 * I * y * alpha + boost))/(2.*d*d*alpha)) *
+            (
+                cexp( 4 * I * y/d ) + cexp( -4 * pi * ( boost) / d / alpha ) - 2. * cexp( 2.* pi * ( pi + d*(I * y *alpha + boost ))/ d / alpha /d)
+
+            );
+            return creal( sqrt(d/2.0/pi)*(stage2a - stage2b) + extra );
         case 0:
-            base1a = expErf(-I * kl * beta);
-            base1b = conj(base1a);
-            base2aa = expErf(pi/beta-I * kl * beta);
-            base2ab = conj(base2aa);
 
-            stage1 = (-I)/(4.*pi)*(base2aa - base2ab - 2*base1a );
-            return creal(stage1);
+            return sqrt(d/2.0/pi)*cimag(stage1a - stage1b);
         default:
             break;
 

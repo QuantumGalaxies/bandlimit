@@ -14,7 +14,7 @@ include "system.pxi"
 
 from numpy import sqrt
 from .coreMath cimport GaussianInSinc
-from .coreMath cimport momentumIntegralInTrain2
+from .coreMath cimport momentumIntegralInTrain3
 
 cpdef double compute(double lattice, int n, double alpha, double y, double X):
         """
@@ -31,4 +31,4 @@ cpdef double ops(double lattice, double alpha, double y, diagonal_flag):
         * momentumIntegralInTrain2 for normalized_gaussian @ y 
         * off diagonal piece coupled to momentum operators
         """
-        return momentumIntegralInTrain2( sqrt(alpha/2.0), y/lattice , lattice, diagonal_flag )
+        return momentumIntegralInTrain3( 0,(alpha), y , lattice, diagonal_flag )
