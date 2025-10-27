@@ -12,7 +12,6 @@
 
 include "system.pxi"
 
-from numpy import sqrt
 from .coreMath cimport GaussianInSinc
 from .coreMath cimport momentumIntegralInTrain3
 

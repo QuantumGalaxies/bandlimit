@@ -133,10 +133,10 @@ double momentumIntegralInTrain3 ( double boost, double alpha, double y , double 
                 cexp( 4 * I * y/d ) + cexp( -4 * pi * ( boost) / d / alpha ) - 2. * cexp( 2.* pi * ( pi + d*(I * y *alpha + boost ))/ d / alpha /d)
 
             );
-            return creal( sqrt(d/2.0/pi)*(stage2a - stage2b) + extra );
+            return creal( sqrt(d/2.0/pi)*(stage2a - stage2b) + extra )/sqrt(2.0*pi);
         case 0:
 
-            return sqrt(d/2.0/pi)*cimag(stage1a - stage1b);
+            return sqrt(d/2.0/pi)*cimag(stage1a - stage1b)/sqrt(2.0*pi);
         default:
             break;
 
